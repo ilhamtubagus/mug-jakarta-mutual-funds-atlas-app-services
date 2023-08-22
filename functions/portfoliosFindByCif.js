@@ -108,11 +108,5 @@ exports = async function findByCif(cif){
     const mongodb = context.services.get("mongodb-atlas");
     const portfoliosCollection =  mongodb.db("mutual-funds").collection("portfolios");
 
-    try{
-        const portfolios = await portfoliosCollection.aggregate(pipeline(cif)).toArray();
-        return portfolios;
-    }catch (e) {
-      console.error(e);
-        throw new Error(e);
-    }
+    return await portfoliosCollection.aggregate(pipeline(cif)).toArray();
 }
