@@ -1,7 +1,7 @@
 {
-    "app_id": "mutual-funds-ftxsv",
+    "app_id": "mutual-funds-app-services-zusuq",
     "config_version": 20210101,
-    "name": "mutual-funds",
+    "name": "mutual-funds-app-services",
     "location": "SG",
     "provider_region": "aws-ap-southeast-1",
     "deployment_model": "LOCAL"
