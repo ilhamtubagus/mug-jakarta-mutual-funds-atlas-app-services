@@ -10,6 +10,8 @@ describe('#createAccount', () =>{
         dateOfBirth: '02-01-1999',
         cif: '1ADSA1ADSA',
         riskProfile: 'aggressive',
+        createdAt: new Date(),
+        modifiedAt: new Date()
     };
 
     beforeEach(() => {
