@@ -30,12 +30,17 @@ describe('#findAccountByEmail', () => {
     const expectedQuery = {
       email,
     };
+    const expectedOptions = {
+      projection: {
+        _id: 0,
+      },
+    };
 
     await findAccountByEmail(email);
 
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
     expect(context.services.get.db.collection).toBeCalledWith('accounts');
-    expect(context.services.get.db.collection.findOne).toBeCalledWith(expectedQuery);
+    expect(context.services.get.db.collection.findOne).toBeCalledWith(expectedQuery, expectedOptions);
   });
 
   it('should set db name with default database name if value in environment not set', async () => {

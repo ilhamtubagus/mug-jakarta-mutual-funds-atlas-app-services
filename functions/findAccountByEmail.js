@@ -3,7 +3,7 @@ const findAccountByEmail = async (email) => {
   const mongodb = context.services.get('mongodb-atlas');
   const accountsCollection = mongodb.db(databaseName).collection('accounts');
 
-  return accountsCollection.findOne({ email });
+  return accountsCollection.findOne({ email }, { projection: { _id: 0 } });
 };
 
 exports = findAccountByEmail;
