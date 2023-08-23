@@ -30,12 +30,7 @@ describe('#findAccountByEmail', () => {
     const expectedQuery = {
       email,
     };
-    const expectedOptions = {
-      projection: {
-        _id: 0,
-        password: 0,
-      },
-    };
+    const expectedOptions = { _id: 0, password: 0 };
 
     await findAccountByEmail(email);
 
