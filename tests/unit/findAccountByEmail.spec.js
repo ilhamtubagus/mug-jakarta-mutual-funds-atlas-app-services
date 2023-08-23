@@ -33,6 +33,7 @@ describe('#findAccountByEmail', () => {
     const expectedOptions = {
       projection: {
         _id: 0,
+        password: 0,
       },
     };
 
