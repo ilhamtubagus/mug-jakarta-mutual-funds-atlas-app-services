@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 const Realm = require('realm-web');
+/* eslint-disable camelcase */
 const { app_id } = require('../../realm_config.json');
 
 describe('#createAccount', () => {

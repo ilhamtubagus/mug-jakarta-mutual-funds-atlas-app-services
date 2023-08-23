@@ -12,7 +12,8 @@
     "rules": {
     },
     "globals": {
-    "expect": true
+        "expect": true,
+        "context": true
     },
     "plugins": ["jest"],
     "overrides": [
