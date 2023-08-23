@@ -43,7 +43,7 @@ const findProducts = async (investmentManager, productCategory) => {
   const productsCollection = mongodb.db(databaseName).collection('products');
 
   return productsCollection
-    .aggregate(constructPipeline(investmentManager, productCategory)).toArray();
+    .aggregate([]).toArray();
 };
 
 exports = findProducts;
