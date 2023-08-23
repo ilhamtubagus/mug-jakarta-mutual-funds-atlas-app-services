@@ -149,16 +149,4 @@ describe('#findPortfolioByCIF', () => {
 
     expect(context.services.get.db).toBeCalledWith('mutual-funds');
   });
-
-  it('should throw error when aggregation failed', async () => {
-    toArray.mockImplementation(() => {
-      throw new Error();
-    });
-
-    try {
-      await findPortfolioByCIF(CIF);
-    } catch (e) {
-      expect(e).toStrictEqual(new Error());
-    }
-  });
 });

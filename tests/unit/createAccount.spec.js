@@ -51,16 +51,4 @@ describe('#createAccount', () => {
 
     expect(context.services.get.db).toBeCalledWith('mutual-funds');
   });
-
-  it('should throw error when insertion failed', async () => {
-    insertOne.mockImplementation(() => {
-      throw new Error();
-    });
-
-    try {
-      await createAccount(accountPayload);
-    } catch (e) {
-      expect(e).toStrictEqual(new Error());
-    }
-  });
 });

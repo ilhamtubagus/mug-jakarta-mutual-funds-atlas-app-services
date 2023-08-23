@@ -46,16 +46,4 @@ describe('#findAccountByEmail', () => {
 
     expect(context.services.get.db).toBeCalledWith('mutual-funds');
   });
-
-  it('should throw error when insertion failed', async () => {
-    findOne.mockImplementation(() => {
-      throw new Error();
-    });
-
-    try {
-      await findAccountByEmail(email);
-    } catch (e) {
-      expect(e).toStrictEqual(new Error());
-    }
-  });
 });

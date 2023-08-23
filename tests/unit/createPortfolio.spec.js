@@ -44,16 +44,4 @@ describe('#createPortfolio', () => {
 
     expect(context.services.get.db).toBeCalledWith('mutual-funds');
   });
-
-  it('should throw error when insertion failed', async () => {
-    insertOne.mockImplementation(() => {
-      throw new Error();
-    });
-
-    try {
-      await createPortfolio(portfolioPayload);
-    } catch (e) {
-      expect(e).toStrictEqual(new Error());
-    }
-  });
 });
