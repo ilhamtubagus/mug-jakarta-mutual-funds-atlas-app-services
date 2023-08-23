@@ -104,15 +104,22 @@ const pipeline = (cif) => [
     },
 ];
 
-exports = async function findPortfoliosByCIF(cif){
+const findPortfoliosByCIF = async(cif) => {
     const databaseName = context.environment.values.databaseName || "mutual-funds"
     const mongodb = context.services.get("mongodb-atlas");
     const portfoliosCollection =  mongodb.db(databaseName).collection("portfolios");
 
     try {
-        const portfolios = portfoliosCollection.aggregate(pipeline(cif)).toArray();
+        const portfolios = await portfoliosCollection.aggregate(pipeline(cif)).toArray();
         return portfolios;
     }catch (e) {
         throw e;
     }
+}
+
+exports = findPortfoliosByCIF
+
+/* istanbul ignore next */
+if (typeof module !== "undefined") {
+    module.exports = findPortfoliosByCIF;
 }

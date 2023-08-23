@@ -1,0 +1,30 @@
+{
+  "name": "mutual-funds-atlas-app-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "env-cmd -f ./.env jest --runInBand --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilhamtubagus/mutual-funds-atlas-app-services.git"
+  },
+  "author": "ilham.arfian@btpn.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilhamtubagus/mutual-funds-atlas-app-services/issues"
+  },
+  "homepage": "https://github.com/ilhamtubagus/mutual-funds-atlas-app-services#readme",
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "jest": "^29.6.2",
+    "mongodb": "^5.8.0"
+  },
+  "dependencies": {
+    "realm-web": "^2.0.0"
+  },
+  "jest": {
+    "testTimeout": 10000
+  }
+}
