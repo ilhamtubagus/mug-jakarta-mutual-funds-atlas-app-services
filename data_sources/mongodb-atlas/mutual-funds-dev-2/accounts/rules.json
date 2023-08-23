@@ -1,6 +1,6 @@
 {
-    "collection": "portfolios",
-    "database": "mutual-funds",
+    "collection": "accounts",
+    "database": "mutual-funds-dev-2",
     "roles": [
         {
             "name": "readAndWriteAll",
