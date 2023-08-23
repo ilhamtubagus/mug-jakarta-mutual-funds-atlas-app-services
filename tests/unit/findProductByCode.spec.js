@@ -2,9 +2,10 @@ const findProductByCode = require('../../functions/findProductByCode');
 
 describe('#findProductByCode', () => {
   const productCode = 'SCHPU';
+  let aggregate;
 
   beforeEach(() => {
-    const aggregate = jest.fn();
+    aggregate = jest.fn().mockReturnValue([{}]);
     const collection = jest.fn().mockReturnValue({ aggregate });
     const db = jest.fn().mockReturnValue({ collection });
     const get = jest.fn().mockReturnValue({ db });
@@ -104,5 +105,13 @@ describe('#findProductByCode', () => {
     await findProductByCode(productCode);
 
     expect(context.services.get.db).toBeCalledWith('mutual-funds');
+  });
+
+  it('should return empty object when aggregation result is empty array', async () => {
+    aggregate.mockResolvedValue([]);
+
+    const result = await findProductByCode(productCode);
+
+    expect(result).toStrictEqual({});
   });
 });

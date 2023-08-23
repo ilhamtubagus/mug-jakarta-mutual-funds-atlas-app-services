@@ -67,7 +67,12 @@ const findProductByCode = async (productCode) => {
   const mongodb = context.services.get('mongodb-atlas');
   const productsCollection = mongodb.db(databaseName).collection('products');
 
-  return productsCollection.aggregate(pipeline(productCode));
+  const aggregationResult = await productsCollection.aggregate(pipeline(productCode));
+  if (aggregationResult.length === 0) {
+    return {};
+  }
+  const [product] = aggregationResult;
+  return product;
 };
 
 exports = findProductByCode;
