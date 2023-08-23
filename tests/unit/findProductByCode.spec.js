@@ -2,14 +2,16 @@ const findProductByCode = require('../../functions/findProductByCode');
 
 describe('#findProductByCode', () => {
   const productCode = 'SCHPU';
-  let aggregate;
+  let toArray;
 
   beforeEach(() => {
-    aggregate = jest.fn().mockReturnValue([{}]);
+    toArray = jest.fn().mockReturnValue([{}]);
+    const aggregate = jest.fn().mockReturnValue({ toArray });
     const collection = jest.fn().mockReturnValue({ aggregate });
     const db = jest.fn().mockReturnValue({ collection });
     const get = jest.fn().mockReturnValue({ db });
 
+    aggregate.toArray = toArray;
     collection.aggregate = aggregate;
     db.collection = collection;
     get.db = db;
@@ -97,6 +99,7 @@ describe('#findProductByCode', () => {
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
     expect(context.services.get.db.collection).toBeCalledWith('products');
     expect(context.services.get.db.collection.aggregate).toBeCalledWith(expectedPipeline);
+    expect(context.services.get.db.collection.aggregate.toArray).toBeCalled();
   });
 
   it('should set db name with default database name if value in environment not set', async () => {
@@ -108,7 +111,7 @@ describe('#findProductByCode', () => {
   });
 
   it('should return empty object when aggregation result is empty array', async () => {
-    aggregate.mockResolvedValue([]);
+    toArray.mockResolvedValue([]);
 
     const result = await findProductByCode(productCode);
 
