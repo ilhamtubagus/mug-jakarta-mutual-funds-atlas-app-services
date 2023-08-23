@@ -10,6 +10,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "no-underscore-dangle": "off"
     },
     "globals": {
         "expect": true,
