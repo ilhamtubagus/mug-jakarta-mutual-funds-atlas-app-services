@@ -1,3 +1,5 @@
 {
-    "values": {}
+    "values": {
+        "database": "mutual-funds-dev-2"
+    }
 }
