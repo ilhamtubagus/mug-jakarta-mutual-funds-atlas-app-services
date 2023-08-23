@@ -1,5 +1,5 @@
 {
     "values": {
-        "database": "mutual-funds-dev"
+        "databaseName": "mutual-funds-dev"
     }
 }

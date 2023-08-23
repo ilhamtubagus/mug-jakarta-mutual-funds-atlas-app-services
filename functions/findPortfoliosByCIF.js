@@ -105,8 +105,9 @@ const pipeline = (cif) => [
 ];
 
 exports = async function findPortfoliosByCIF(cif){
+    const databaseName = context.environment.values.databaseName || "mutual-funds"
     const mongodb = context.services.get("mongodb-atlas");
-    const portfoliosCollection =  mongodb.db("mutual-funds").collection("portfolios");
+    const portfoliosCollection =  mongodb.db(databaseName).collection("portfolios");
 
     try {
         const portfolios = portfoliosCollection.aggregate(pipeline(cif)).toArray();
