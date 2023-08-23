@@ -67,7 +67,7 @@ const findProductByCode = async (productCode) => {
   const mongodb = context.services.get('mongodb-atlas');
   const productsCollection = mongodb.db(databaseName).collection('products');
 
-  const aggregationResult = await productsCollection.aggregate(pipeline(productCode));
+  const aggregationResult = await productsCollection.aggregate(pipeline(productCode)).toArray();
   if (aggregationResult.length === 0) {
     return {};
   }
