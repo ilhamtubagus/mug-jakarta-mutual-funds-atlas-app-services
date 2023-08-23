@@ -1,3 +1,4 @@
+const _isNonEmptyString = (text) => typeof text !== 'undefined' && typeof text === 'string' && text.length > 0;
 const constructPipeline = (investmentManager, productCategory) => {
   const pipeline = [
     {
@@ -8,11 +9,7 @@ const constructPipeline = (investmentManager, productCategory) => {
         as: 'investmentManager',
       },
     },
-    {
-      $unwind: {
-        path: '$investmentManager',
-      },
-    },
+    { $unwind: { path: '$investmentManager' } },
     {
       $project: {
         _id: 0,
@@ -21,20 +18,22 @@ const constructPipeline = (investmentManager, productCategory) => {
       },
     },
   ];
-  if (productCategory !== undefined) {
+
+  if (_isNonEmptyString(productCategory)) {
     pipeline.splice(0, 0, {
       $match: {
         productCategory: { $eq: productCategory },
       },
     });
   }
-  if (investmentManager !== undefined) {
+  if (_isNonEmptyString(investmentManager)) {
     pipeline.splice(pipeline.length, 0, {
       $match: {
         'investmentManager.investmentManagerCode': { $eq: investmentManager },
       },
     });
   }
+
   return pipeline;
 };
 const findProducts = async (investmentManager, productCategory) => {
@@ -43,7 +42,7 @@ const findProducts = async (investmentManager, productCategory) => {
   const productsCollection = mongodb.db(databaseName).collection('products');
 
   return productsCollection
-    .aggregate([]).toArray();
+    .aggregate(constructPipeline(investmentManager, productCategory)).toArray();
 };
 
 exports = findProducts;
