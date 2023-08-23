@@ -35,7 +35,7 @@ describe('#createAccount', () => {
     await mongoClient.close();
   });
 
-  it('should create portfolio', async () => {
+  it('should create account', async () => {
     await app.functions.createAccount(accountPayload);
 
     const createdAccount = await collection.findOne({ cif: accountPayload.cif }, { projection: { _id: 0 } });
