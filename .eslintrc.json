@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "jest/globals": true
+    },
+    "extends": "airbnb-base",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+    },
+    "globals": {
+    "expect": true
+    },
+    "plugins": ["jest"],
+    "overrides": [
+        {
+            "files": ["*.spec.js"],
+            "rules": {
+                "max-len": "off"
+            }
+        }
+    ]
+}
