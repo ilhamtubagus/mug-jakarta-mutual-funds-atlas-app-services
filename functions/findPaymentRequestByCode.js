@@ -3,7 +3,7 @@ const findPaymentRequestByCode = async (paymentCode) => {
   const mongodb = context.services.get('mongodb-atlas');
   const paymentRequestCollection = mongodb.db(databaseName).collection('paymentRequests');
 
-  return paymentRequestCollection.findOne({ paymentCode });
+  return paymentRequestCollection.findOne({ paymentCode }, { _id: 0});
 };
 
 exports = findPaymentRequestByCode;
