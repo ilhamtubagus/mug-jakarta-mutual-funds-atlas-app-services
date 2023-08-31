@@ -6,10 +6,16 @@ const createTransaction = async (transaction, paymentRequest) => {
 
   const session = mongodb.startSession();
 
+  const transactionPayload = {
+    ...transaction,
+    modifiedAt: new Date(),
+    createdAt: new Date(),
+  };
+
   try {
     await session.withTransaction(async () => {
       await Promise.all([
-        await transactionCollection.insertOne(transaction, { session }),
+        await transactionCollection.insertOne(transactionPayload, { session }),
         await paymentRequestCollection.insertOne(paymentRequest, { session }),
       ]);
     }, {});

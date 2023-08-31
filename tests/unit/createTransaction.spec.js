@@ -1,9 +1,11 @@
+const mockDate = require('mockdate');
 const { mockTransactions, mockPaymentRequests } = require('../fixtures');
 const createTransaction = require('../../functions/createTransaction');
 
 describe('#createPaymentRequest', () => {
   let insertOne;
-  const transactionPayload = { ...mockTransactions[0] };
+  const now = new Date();
+  const transactionPayload = { ...mockTransactions[0], createdAt: now, modifiedAt: now };
   const paymentRequestPayload = { ...mockPaymentRequests[0] };
   let startSession;
 
@@ -35,6 +37,7 @@ describe('#createPaymentRequest', () => {
         get,
       },
     };
+    mockDate.set(now);
   });
 
   it('should invoke insertOne on transactions and payment requests', async () => {
@@ -44,7 +47,7 @@ describe('#createPaymentRequest', () => {
     expect(context.services.get.db.collection).toBeCalledTimes(2);
     expect(context.services.get.startSession.withTransaction).toBeCalled();
     expect(context.services.get.db.collection.insertOne.mock.calls[0][0])
-      .toBe(transactionPayload);
+      .toStrictEqual(transactionPayload);
     expect(context.services.get.db.collection.insertOne.mock.calls[0][1])
       .toStrictEqual({ session: startSession() });
     expect(context.services.get.db.collection.insertOne.mock.calls[1][0])
@@ -64,7 +67,7 @@ describe('#createPaymentRequest', () => {
       expect(context.services.get.startSession.withTransaction).toBeCalled();
       expect(context.services.get.db.collection).toBeCalledTimes(2);
       expect(context.services.get.db.collection.insertOne.mock.calls[0][0])
-        .toBe(transactionPayload);
+        .toStrictEqual(transactionPayload);
       expect(context.services.get.db.collection.insertOne.mock.calls[0][1])
         .toStrictEqual({ session: startSession() });
       expect(context.services.get.db.collection.insertOne.mock.calls[1])

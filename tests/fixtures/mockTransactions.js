@@ -21,7 +21,5 @@ module.exports = [
     type: 'BUY',
     status: 'PENDING',
     portfolioCode: '001',
-    modifiedAt: new Date(),
-    createdAt: new Date(),
   },
 ];
