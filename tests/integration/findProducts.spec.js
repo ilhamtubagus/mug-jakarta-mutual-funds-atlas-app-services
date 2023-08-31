@@ -7,6 +7,7 @@ const { mockProducts, mockInvestmentManagers } = require('../fixtures');
 describe('#findProducts', () => {
   let mongoClient;
   let app;
+  const sortByName = (prev, curr) => prev.name.localeCompare(curr.name);
 
   beforeAll(async () => {
     app = new Realm.App({ id: app_id });
@@ -34,7 +35,8 @@ describe('#findProducts', () => {
         ...product,
         investmentManager,
       };
-    });
+    }).sort(sortByName);
+
     let result = await
     app.functions.findProducts();
     result = result.map((p) => {
@@ -42,7 +44,7 @@ describe('#findProducts', () => {
       return {
         ...product,
       };
-    });
+    }).sort(sortByName);
 
     expect(result).toStrictEqual(expectedProducts);
   });
@@ -59,7 +61,8 @@ describe('#findProducts', () => {
         ...product,
         investmentManager,
       };
-    });
+    }).sort(sortByName);
+
     let result = await
     app.functions.findProducts(undefined, 'money market');
     result = result.map((p) => {
@@ -67,7 +70,7 @@ describe('#findProducts', () => {
       return {
         ...product,
       };
-    });
+    }).sort(sortByName);
 
     expect(result).toStrictEqual(expectedProducts);
   });
@@ -84,7 +87,8 @@ describe('#findProducts', () => {
         ...product,
         investmentManager,
       };
-    });
+    }).sort(sortByName);
+
     let result = await
     app.functions.findProducts('SCH');
     result = result.map((p) => {
@@ -92,7 +96,7 @@ describe('#findProducts', () => {
       return {
         ...product,
       };
-    });
+    }).sort(sortByName);
 
     expect(result).toStrictEqual(expectedProducts);
   });
