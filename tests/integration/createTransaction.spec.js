@@ -38,6 +38,10 @@ describe('#createTransaction', () => {
 
     const createdTransaction = await transactionCollection.findOne({ cif: transactionPayload.cif }, { projection: { _id: 0 } });
     const createdPaymentRequest = await paymentRequestCollection.findOne({ paymentCode: paymentRequestPayload.paymentCode }, { projection: { _id: 0 } });
+    delete createdTransaction.createdAt;
+    delete createdTransaction.modifiedAt;
+    delete createdPaymentRequest.createdAt;
+    delete createdPaymentRequest.modifiedAt;
     expect(createdTransaction).not.toBeNull();
     expect(createdPaymentRequest).not.toBeNull();
     expect(createdTransaction).toStrictEqual(transactionPayload);
