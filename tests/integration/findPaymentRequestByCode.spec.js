@@ -29,7 +29,7 @@ describe('#findPaymentRequestByCode', () => {
   });
 
   afterAll(async () => {
-    // await collection.deleteMany({});
+    await collection.deleteMany({});
     await mongoClient.close();
   });
 
@@ -38,8 +38,8 @@ describe('#findPaymentRequestByCode', () => {
 
     const paymentRequest = await app.functions.findPaymentRequestByCode(paymentCode);
 
-    const expectedAccount = await collection.findOne({ paymentCode });
-    expect(paymentRequest).not.toBeNull();
-    expect(paymentRequest).toStrictEqual(expectedAccount);
+    const expectedPaymentRequest = await collection.findOne({ paymentCode }, { projection: { _id: 0 } });
+
+    expect(paymentRequest).toStrictEqual(expectedPaymentRequest);
   });
 });
