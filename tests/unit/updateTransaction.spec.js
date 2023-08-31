@@ -5,7 +5,7 @@ const updateTransaction = require('../../functions/updateTransaction');
 describe('#updateTransaction', () => {
   let findOneAndUpdate;
   const now = new Date();
-  const transactionPayload = { ...mockTransactions[0], createdAt: now, modifiedAt: now };
+  const transactionPayload = { ...mockTransactions[0], createdAt: now };
 
   beforeEach(() => {
     findOneAndUpdate = jest.fn();
@@ -38,6 +38,7 @@ describe('#updateTransaction', () => {
       $set: {
         ...transactionPayload,
       },
+      $currentDate: { modifiedAt: true },
     };
     const expectedOptions = {
       returnNewDocument: true,
