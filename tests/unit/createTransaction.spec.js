@@ -1,19 +1,10 @@
+const { mockTransactions, mockPaymentRequests } = require('../fixtures');
 const createTransaction = require('../../functions/createTransaction');
 
 describe('#createPaymentRequest', () => {
   let insertOne;
-  const transactionPayload = {
-    transactionID: 'U2FsdGVkX180W7K5HQ',
-    amount: 12000,
-    productCode: 'SCHE',
-    type: 'BUY',
-    portfolioCode: '001',
-  };
-  const paymentRequestPayload = {
-    paymentCode: 'U2FsdGVkX180W7K5HQ',
-    transactionID: 'U2FsdGVkX180W7K5HQ',
-    expiredAt: new Date(),
-  };
+  const transactionPayload = { ...mockTransactions[0] };
+  const paymentRequestPayload = { ...mockPaymentRequests[0] };
   let startSession;
 
   beforeEach(() => {
