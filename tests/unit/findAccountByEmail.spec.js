@@ -26,7 +26,7 @@ describe('#findAccountByEmail', () => {
     };
   });
 
-  it('should invoke find one in portfolios collection', async () => {
+  it('should invoke find one in accounts collection', async () => {
     const expectedQuery = {
       email,
     };

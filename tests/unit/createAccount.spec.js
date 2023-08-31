@@ -36,7 +36,7 @@ describe('#createAccount', () => {
     };
   });
 
-  it('should invoke insert one in portfolios collection', async () => {
+  it('should invoke insert one in accounts collection', async () => {
     await createAccount(accountPayload);
 
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
