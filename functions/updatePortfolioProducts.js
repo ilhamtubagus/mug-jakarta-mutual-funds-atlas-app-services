@@ -8,7 +8,12 @@ const updatePortfolioProducts = async (cif, portfolioCode, updateProducts) => {
     $set: { products: updateProducts },
     $currentDate: { modifiedAt: true },
   };
-  const options = { returnNewDocument: true };
+  const options = {
+    returnNewDocument: true,
+    projection: {
+      _id: 0,
+    },
+  };
 
   return portfolioCollection.findOneAndUpdate(query, update, options);
 };

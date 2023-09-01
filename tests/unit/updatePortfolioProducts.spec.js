@@ -45,6 +45,9 @@ describe('#updatePortfolioProducts', () => {
     };
     const expectedOptions = {
       returnNewDocument: true,
+      projection: {
+        _id: 0,
+      },
     };
 
     await updatePortfolioProducts(cif, portfolioCode, updatedProducts);
