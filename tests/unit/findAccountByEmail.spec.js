@@ -30,7 +30,7 @@ describe('#findAccountByEmail', () => {
     const expectedQuery = {
       email,
     };
-    const expectedOptions = { _id: 0, password: 0 };
+    const expectedOptions = { _id: 0 };
 
     await findAccountByEmail(email);
 
