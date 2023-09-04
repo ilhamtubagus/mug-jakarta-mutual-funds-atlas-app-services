@@ -5,7 +5,7 @@ const findTransactions = async (cif, payload) => {
   const transactionCollection = mongodb.db(databaseName).collection('transactions');
 
   const {
-    transactionType, productCode, sortBy, page, order,
+    transactionType, productCode, sortBy, page= '1', order,
   } = payload;
 
   const filter = {
