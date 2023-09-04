@@ -40,7 +40,7 @@ describe('#findAccountByEmail', () => {
   it('should return account for given cif', async () => {
     const account = await app.functions.findAccountByEmail(accountPayload.email);
 
-    const expectedAccount = await collection.findOne({ email: accountPayload.email }, { projection: { _id: 0, password: 0 } });
+    const expectedAccount = await collection.findOne({ email: accountPayload.email }, { projection: { _id: 0 } });
 
     expect(account).not.toBeNull();
     expect(account).toStrictEqual(expectedAccount);
