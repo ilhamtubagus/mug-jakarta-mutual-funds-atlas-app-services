@@ -22,12 +22,15 @@ const findTransactions = async (cif, payload) => {
     cif,
     ...filter,
   };
+  const projection = {
+    _id: 0,
+  };
 
   const skip = offset * (parseInt(page, 10) - 1);
   const limit = skip + offset;
 
   return transactionCollection
-    .find(query)
+    .find(query, projection)
     .sort(sort)
     .skip(skip)
     .limit(limit)

@@ -3,6 +3,7 @@ const findTransactions = require('../../functions/findTransactions');
 describe('#findTransactions', () => {
   const cif = 'C6DTCTKBST';
   let payload;
+  const expectedProjection = { _id: 0 };
 
   beforeEach(() => {
     const toArray = jest.fn();
@@ -49,7 +50,7 @@ describe('#findTransactions', () => {
 
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
     expect(context.services.get.db.collection).toBeCalledWith('transactions');
-    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery);
+    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery, expectedProjection);
     expect(context.services.get.db.collection.find.sort).toBeCalledWith({});
     expect(context.services.get.db.collection.find.sort.skip).toBeCalledWith(0);
     expect(context.services.get.db.collection.find.sort.skip.limit).toBeCalledWith(context.environment.values.offset);
@@ -66,7 +67,7 @@ describe('#findTransactions', () => {
 
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
     expect(context.services.get.db.collection).toBeCalledWith('transactions');
-    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery);
+    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery, expectedProjection);
     expect(context.services.get.db.collection.find.sort).toBeCalledWith({});
     expect(context.services.get.db.collection.find.sort.skip).toBeCalledWith(0);
     expect(context.services.get.db.collection.find.sort.skip.limit).toBeCalledWith(context.environment.values.offset);
@@ -86,7 +87,7 @@ describe('#findTransactions', () => {
 
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
     expect(context.services.get.db.collection).toBeCalledWith('transactions');
-    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery);
+    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery, expectedProjection);
     expect(context.services.get.db.collection.find.sort).toBeCalledWith(expectedSort);
     expect(context.services.get.db.collection.find.sort.skip).toBeCalledWith(0);
     expect(context.services.get.db.collection.find.sort.skip.limit).toBeCalledWith(context.environment.values.offset);
@@ -106,7 +107,7 @@ describe('#findTransactions', () => {
 
     expect(context.services.get.db).toBeCalledWith(context.environment.values.databaseName);
     expect(context.services.get.db.collection).toBeCalledWith('transactions');
-    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery);
+    expect(context.services.get.db.collection.find).toBeCalledWith(expectedQuery, expectedProjection);
     expect(context.services.get.db.collection.find.sort).toBeCalledWith(expectedSort);
     expect(context.services.get.db.collection.find.sort.skip).toBeCalledWith(0);
     expect(context.services.get.db.collection.find.sort.skip.limit).toBeCalledWith(context.environment.values.offset);
