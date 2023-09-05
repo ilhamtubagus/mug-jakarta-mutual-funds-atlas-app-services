@@ -11,10 +11,43 @@ const constructPipeline = (investmentManager, productCategory) => {
     },
     { $unwind: { path: '$investmentManager' } },
     {
+      $lookup: {
+        from: 'navs',
+        let: {
+          productCode: '$productCode',
+        },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $eq: ['$productCode', '$$productCode'],
+              },
+            },
+          },
+          {
+            $sort: {
+              createdAt: -1,
+            },
+          },
+          {
+            $limit: 1,
+          },
+        ],
+        as: 'nav',
+      },
+    },
+    {
+      $unwind: {
+        path: '$nav',
+      },
+    },
+    {
       $project: {
         _id: 0,
         'productCategory._id': 0,
         'investmentManager._id': 0,
+        'nav._id': 0,
+        'nav.productCode': 0,
       },
     },
   ];
