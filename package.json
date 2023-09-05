@@ -25,7 +25,8 @@
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jest": "^27.2.3",
     "jest": "^29.6.2",
-    "mongodb": "^5.8.0"
+    "mongodb": "^5.8.0",
+    "lodash": "^4.17.21"
   },
   "dependencies": {
     "mockdate": "^3.0.5",

@@ -6,6 +6,7 @@ describe('#updateTransaction', () => {
   let findOneAndUpdate;
   const now = new Date();
   const transactionPayload = { ...mockTransactions[0], createdAt: now };
+  delete transactionPayload.modifiedAt;
 
   beforeEach(() => {
     findOneAndUpdate = jest.fn();

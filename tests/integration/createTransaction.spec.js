@@ -10,6 +10,8 @@ describe('#createTransaction', () => {
   let mongoClient;
   let app;
   const transactionPayload = { ...mockTransactions[0] };
+  delete transactionPayload.createdAt;
+  delete transactionPayload.modifiedAt;
   const paymentRequestPayload = { ...mockPaymentRequests[0] };
 
   beforeAll(async () => {
