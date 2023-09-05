@@ -8,6 +8,7 @@ describe('#findProductByCode', () => {
   let collection;
   let mongoClient;
   let app;
+  let navCollection;
   const productWithoutNav = {
     name: 'Schroder Dana Pasar Campuran',
     productCode: 'SCHPC',
@@ -29,12 +30,15 @@ describe('#findProductByCode', () => {
     mongoClient = new MongoClient(uri);
     await mongoClient.connect();
     collection = mongoClient.db().collection('products');
+    navCollection = mongoClient.db().collection('navs');
 
-    await collection.insertOne(productWithoutNav);
+    await collection.insertMany([...mockProducts, productWithoutNav]);
+    await navCollection.insertMany(mockNavs);
   });
 
   afterAll(async () => {
-    await collection.deleteOne({ productCode: productWithoutNav.productCode });
+    await collection.deleteMany({});
+    await navCollection.deleteMany({});
     await mongoClient.close();
   });
 

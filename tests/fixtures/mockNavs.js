@@ -20,7 +20,7 @@ const navs = [
   },
   {
     productCode: 'SCHPU',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -40,7 +40,7 @@ const navs = [
   },
   {
     productCode: 'SCHE',
-    createdAt: new Date('2023-08-23'),
+    createdAt: new Date('2023-08-22'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -60,7 +60,7 @@ const navs = [
   },
   {
     productCode: 'SCHE',
-    createdAt: new Date('2023-08-22'),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -80,7 +80,7 @@ const navs = [
   },
   {
     productCode: 'SCHO',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-22'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -100,7 +100,7 @@ const navs = [
   },
   {
     productCode: 'SCHO',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -120,7 +120,7 @@ const navs = [
   },
   {
     productCode: 'MINVPU',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -140,7 +140,7 @@ const navs = [
   },
   {
     productCode: 'MINVPU',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-24'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -160,7 +160,7 @@ const navs = [
   },
   {
     productCode: 'MINVPU',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-25'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -180,7 +180,7 @@ const navs = [
   },
   {
     productCode: 'MINVE',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-22'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -200,7 +200,7 @@ const navs = [
   },
   {
     productCode: 'MINVE',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -220,7 +220,7 @@ const navs = [
   },
   {
     productCode: 'MINVO',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -240,7 +240,7 @@ const navs = [
   },
   {
     productCode: 'MINVO',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-24'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -260,7 +260,7 @@ const navs = [
   },
   {
     productCode: 'BNPPE',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -280,7 +280,7 @@ const navs = [
   },
   {
     productCode: 'BNPPE',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-24'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -300,7 +300,7 @@ const navs = [
   },
   {
     productCode: 'BNPE',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-22'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -320,7 +320,7 @@ const navs = [
   },
   {
     productCode: 'BNPE',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -340,7 +340,7 @@ const navs = [
   },
   {
     productCode: 'BNPO',
-    createdAt: new Date(),
+    createdAt: new Date('2023-09-23'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,
@@ -360,7 +360,7 @@ const navs = [
   },
   {
     productCode: 'BNPO',
-    createdAt: new Date(),
+    createdAt: new Date('2023-08-22'),
     ytdPercent: 5.65,
     ytdValue: 238.41,
     value5Y: 1236.67,

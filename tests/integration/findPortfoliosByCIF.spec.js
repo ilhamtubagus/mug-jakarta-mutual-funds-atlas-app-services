@@ -2,10 +2,12 @@ const { MongoClient } = require('mongodb');
 const Realm = require('realm-web');
 /* eslint-disable camelcase */
 const { app_id } = require('../../realm_config.json');
-const { mockPortfolios } = require('../fixtures');
+const { mockPortfolios, mockNavs, mockProducts } = require('../fixtures');
 
 describe('#findPortfolioByCIF', () => {
   let collection;
+  let productCollection;
+  let navCollection;
   let mongoClient;
   let app;
 
@@ -18,11 +20,17 @@ describe('#findPortfolioByCIF', () => {
     mongoClient = new MongoClient(uri);
     await mongoClient.connect();
     collection = mongoClient.db().collection('portfolios');
+    productCollection = mongoClient.db().collection('products');
+    navCollection = mongoClient.db().collection('navs');
 
     await collection.insertMany(mockPortfolios);
+    await productCollection.insertMany(mockProducts);
+    await navCollection.insertMany(mockNavs);
   });
 
   afterAll(async () => {
+    await productCollection.deleteMany({});
+    await navCollection.deleteMany({});
     await collection.deleteMany({});
     await mongoClient.close();
   });
@@ -47,7 +55,7 @@ describe('#findPortfolioByCIF', () => {
           {
             productCode: 'SCHE',
             units: 100,
-            currentNav: 1900,
+            currentNav: 1999,
             name: 'Schroder Dana Equity',
             productCategory: 'equity',
             imageUrl: '',
