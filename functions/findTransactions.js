@@ -1,6 +1,8 @@
+const radixDecimal = 10;
+
 const findTransactions = async (cif, payload) => {
   const databaseName = context.environment.values.databaseName || 'mutual-funds';
-  const offset = context.environment.values.offset || 6;
+  const offset = parseInt(context.environment.values.offset || '6', radixDecimal);
   const mongodb = context.services.get('mongodb-atlas');
   const transactionCollection = mongodb.db(databaseName).collection('transactions');
 
@@ -26,14 +28,13 @@ const findTransactions = async (cif, payload) => {
     _id: 0,
   };
 
-  const skip = offset * (parseInt(page, 10) - 1);
-  const limit = skip + offset;
+  const skip = offset * (parseInt(page, radixDecimal) - 1);
 
   return transactionCollection
     .find(query, projection)
     .sort(sort)
     .skip(skip)
-    .limit(limit)
+    .limit(offset)
     .toArray();
 };
 
